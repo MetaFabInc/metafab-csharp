@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**BurnCurrency**](CurrenciesApi.md#burncurrency) | **POST** /v1/currencies/{currencyId}/burns | Burn currency
 [**CreateCurrency**](CurrenciesApi.md#createcurrency) | **POST** /v1/currencies | Create currency
 [**GetCurrencies**](CurrenciesApi.md#getcurrencies) | **GET** /v1/currencies | Get currencies
-[**GetCurrencyBalances**](CurrenciesApi.md#getcurrencybalances) | **GET** /v1/currencies/{currencyId}/balances | Get currency balance
+[**GetCurrencyBalance**](CurrenciesApi.md#getcurrencybalance) | **GET** /v1/currencies/{currencyId}/balances | Get currency balance
 [**GetCurrencyFees**](CurrenciesApi.md#getcurrencyfees) | **GET** /v1/currencies/{currencyId}/fees | Get currency fees
 [**MintCurrency**](CurrenciesApi.md#mintcurrency) | **POST** /v1/currencies/{currencyId}/mints | Mint currency
 [**SetCurrencyFees**](CurrenciesApi.md#setcurrencyfees) | **POST** /v1/currencies/{currencyId}/fees | Set currency fees
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Batch transfer currency
 
-Transfers multiple amounts of currency to multiple provided wallet addresses or wallet addresses associated with the provided walletIds. You may also provide a combination of addresses and walletIds in one request, the proper receipients will be automatically determined, with `addresses` getting `amounts` order priority first. Optional references may be included for the transfer. References are useful for identifying transfers intended to pay for items, trades, services and more.
+Transfers multiple amounts of currency to multiple provided wallet addresses or wallet addresses associated with the provided walletIds. You may also provide a combination of addresses and walletIds in one request, the proper receipients will be automatically determined, with `addresses` getting `amounts` order priority first.  Optional references may be included for the transfer. References are useful for identifying transfers intended to pay for items, trades, services and more.
 
 ### Example
 
@@ -343,9 +343,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetCurrencyBalances
+## GetCurrencyBalance
 
-> decimal GetCurrencyBalances (string currencyId, string address = null, string walletId = null)
+> decimal GetCurrencyBalance (string currencyId, string address = null, string walletId = null)
 
 Get currency balance
 
@@ -362,7 +362,7 @@ using Org.MetaFab.Model;
 
 namespace Example
 {
-    public class GetCurrencyBalancesExample
+    public class GetCurrencyBalanceExample
     {
         public static void Main()
         {
@@ -375,12 +375,12 @@ namespace Example
             try
             {
                 // Get currency balance
-                decimal result = apiInstance.GetCurrencyBalances(currencyId, address, walletId);
+                decimal result = apiInstance.GetCurrencyBalance(currencyId, address, walletId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling CurrenciesApi.GetCurrencyBalances: " + e.Message );
+                Debug.Print("Exception when calling CurrenciesApi.GetCurrencyBalance: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -507,7 +507,7 @@ No authorization required
 
 Mint currency
 
-Creates (mints) the provided amount of currency  to the provided wallet address or wallet address associated with the provided walletId.
+Creates (mints) the provided amount of currency to the provided wallet address or wallet address associated with the provided walletId.
 
 ### Example
 

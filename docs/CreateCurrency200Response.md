@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **SupplyCap** | **int** | This field has not had a description added. | [optional] 
 **UpdatedAt** | **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | **string** | This field has not had a description added. | [optional] 
-**Contract** | [**CreateCurrency200ResponseAllOfContract**](CreateCurrency200ResponseAllOfContract.md) |  | [optional] 
+**Contract** | [**CreateCollection200ResponseAllOfContract**](CreateCollection200ResponseAllOfContract.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
