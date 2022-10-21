@@ -22,7 +22,6 @@ docs/CreateCollection200ResponseAllOfContract.md
 docs/CreateCollection200ResponseAllOfContractAllOf.md
 docs/CreateCollectionItemRequest.md
 docs/CreateCollectionItemRequestAttributesInner.md
-docs/CreateCollectionItemRequestAttributesInnerValue.md
 docs/CreateCollectionRequest.md
 docs/CreateContractRequest.md
 docs/CreateCurrency200Response.md
@@ -92,7 +91,6 @@ src/Org.MetaFab/Model/CreateCollection200ResponseAllOfContract.cs
 src/Org.MetaFab/Model/CreateCollection200ResponseAllOfContractAllOf.cs
 src/Org.MetaFab/Model/CreateCollectionItemRequest.cs
 src/Org.MetaFab/Model/CreateCollectionItemRequestAttributesInner.cs
-src/Org.MetaFab/Model/CreateCollectionItemRequestAttributesInnerValue.cs
 src/Org.MetaFab/Model/CreateCollectionRequest.cs
 src/Org.MetaFab/Model/CreateContractRequest.cs
 src/Org.MetaFab/Model/CreateCurrency200Response.cs
