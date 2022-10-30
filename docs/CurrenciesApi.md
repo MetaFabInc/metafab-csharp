@@ -10,7 +10,10 @@ Method | HTTP request | Description
 [**GetCurrencies**](CurrenciesApi.md#getcurrencies) | **GET** /v1/currencies | Get currencies
 [**GetCurrencyBalance**](CurrenciesApi.md#getcurrencybalance) | **GET** /v1/currencies/{currencyId}/balances | Get currency balance
 [**GetCurrencyFees**](CurrenciesApi.md#getcurrencyfees) | **GET** /v1/currencies/{currencyId}/fees | Get currency fees
+[**GetCurrencyRole**](CurrenciesApi.md#getcurrencyrole) | **GET** /v1/currencies/{currencyId}/roles | Get currency role
+[**GrantCurrencyRole**](CurrenciesApi.md#grantcurrencyrole) | **POST** /v1/currencies/{currencyId}/roles | Grant currency role
 [**MintCurrency**](CurrenciesApi.md#mintcurrency) | **POST** /v1/currencies/{currencyId}/mints | Mint currency
+[**RevokeCurrencyRole**](CurrenciesApi.md#revokecurrencyrole) | **DELETE** /v1/currencies/{currencyId}/roles | Revoke currency role
 [**SetCurrencyFees**](CurrenciesApi.md#setcurrencyfees) | **POST** /v1/currencies/{currencyId}/fees | Set currency fees
 [**TransferCurrency**](CurrenciesApi.md#transfercurrency) | **POST** /v1/currencies/{currencyId}/transfers | Transfer currency
 
@@ -501,6 +504,173 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetCurrencyRole
+
+> bool GetCurrencyRole (string currencyId, string role, string address = null, string walletId = null)
+
+Get currency role
+
+Returns a boolean (true/false) representing if the provided role for this currency has been granted to the provided address or address associated with the provided walletId.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GetCurrencyRoleExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new CurrenciesApi(Configuration.Default);
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var role = minter;  // string | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
+            var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+
+            try
+            {
+                // Get currency role
+                bool result = apiInstance.GetCurrencyRole(currencyId, role, address, walletId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling CurrenciesApi.GetCurrencyRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **role** | **string**| A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | 
+ **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+
+### Return type
+
+**bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully retrieved the boolean value representing if the provided role has been granted to the provided address or walletId. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GrantCurrencyRole
+
+> TransactionModel GrantCurrencyRole (string currencyId, string xAuthorization, string xPassword, GrantCurrencyRoleRequest grantCurrencyRoleRequest)
+
+Grant currency role
+
+Grants the provided role for the currency to the provided address or address associated with the provided walletId. Granted roles give different types of authority on behalf of the currency for specific players, addresses, or contracts to perform different types of permissioned currency operations.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GrantCurrencyRoleExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new CurrenciesApi(Configuration.Default);
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
+            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var grantCurrencyRoleRequest = new GrantCurrencyRoleRequest(); // GrantCurrencyRoleRequest | 
+
+            try
+            {
+                // Grant currency role
+                TransactionModel result = apiInstance.GrantCurrencyRole(currencyId, xAuthorization, xPassword, grantCurrencyRoleRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling CurrenciesApi.GrantCurrencyRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
+ **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **grantCurrencyRoleRequest** | [**GrantCurrencyRoleRequest**](GrantCurrencyRoleRequest.md)|  | 
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully granted the provided role to the provided address or address associated with the provided walletId. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## MintCurrency
 
 > TransactionModel MintCurrency (string currencyId, string xAuthorization, string xPassword, MintCurrencyRequest mintCurrencyRequest)
@@ -576,6 +746,90 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successfully created (minted) the currency amount to the provided wallet address or wallet address of the provided walletId. Returns a transaction object. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RevokeCurrencyRole
+
+> TransactionModel RevokeCurrencyRole (string currencyId, string xAuthorization, string xPassword, RevokeCollectionRoleRequest revokeCollectionRoleRequest)
+
+Revoke currency role
+
+Revokes the provided role for the currency to the provided address or address associated with the provided walletId.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class RevokeCurrencyRoleExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new CurrenciesApi(Configuration.Default);
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
+            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var revokeCollectionRoleRequest = new RevokeCollectionRoleRequest(); // RevokeCollectionRoleRequest | 
+
+            try
+            {
+                // Revoke currency role
+                TransactionModel result = apiInstance.RevokeCurrencyRole(currencyId, xAuthorization, xPassword, revokeCollectionRoleRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling CurrenciesApi.RevokeCurrencyRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
+ **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md)|  | 
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully revoked the provided role from the provided address or address associated with the provided walletId. Returns a transaction object. |  -  |
 | **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
 | **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
 

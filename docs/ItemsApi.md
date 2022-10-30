@@ -17,8 +17,11 @@ Method | HTTP request | Description
 [**GetCollectionItemSupply**](ItemsApi.md#getcollectionitemsupply) | **GET** /v1/collections/{collectionId}/items/{collectionItemId}/supplies | Get collection item supply
 [**GetCollectionItemTimelock**](ItemsApi.md#getcollectionitemtimelock) | **GET** /v1/collections/{collectionId}/items/{collectionItemId}/timelocks | Get collection item timelock
 [**GetCollectionItems**](ItemsApi.md#getcollectionitems) | **GET** /v1/collections/{collectionId}/items | Get collection items
+[**GetCollectionRole**](ItemsApi.md#getcollectionrole) | **GET** /v1/collections/{collectionId}/roles | Get collection role
 [**GetCollections**](ItemsApi.md#getcollections) | **GET** /v1/collections | Get collections
+[**GrantCollectionRole**](ItemsApi.md#grantcollectionrole) | **POST** /v1/collections/{collectionId}/roles | Grant collection role
 [**MintCollectionItem**](ItemsApi.md#mintcollectionitem) | **POST** /v1/collections/{collectionId}/items/{collectionItemId}/mints | Mint collection item
+[**RevokeCollectionRole**](ItemsApi.md#revokecollectionrole) | **DELETE** /v1/collections/{collectionId}/roles | Revoke collection role
 [**SetCollectionApproval**](ItemsApi.md#setcollectionapproval) | **POST** /v1/collections/{collectionId}/approvals | Set collection approval
 [**SetCollectionItemTimelock**](ItemsApi.md#setcollectionitemtimelock) | **POST** /v1/collections/{collectionId}/items/{collectionItemId}/timelocks | Set collection item timelock
 [**TransferCollectionItem**](ItemsApi.md#transfercollectionitem) | **POST** /v1/collections/{collectionId}/items/{collectionItemId}/transfers | Transfer collection item
@@ -367,7 +370,7 @@ No authorization required
 
 Create collection item
 
-Creates a new item type. Item type creation associates all of the relevant item data to a specific itemId. Such as item name, image, description, attributes, any arbitrary data such as 2D or 3D model resolver URLs, and more. It is recommended, but not required, that you create a new item type through this endpoint before minting any quantity of the related itemId.  Item type data is uploaded to, and resolved through IPFS for decentralized persistence. Any itemId provided will have its existing item type overriden if it already exists.
+Creates a new item type. Item type creation associates all of the relevant item data to a specific itemId. Such as item name, image, description, attributes, any arbitrary data such as 2D or 3D model resolver URLs, and more. It is recommended, but not required, that you create a new item type through this endpoint before minting any quantity of the related itemId.  Any itemId provided will have its existing item type overriden if it already exists.  Item type data is uploaded to, and resolved through IPFS for decentralized persistence.
 
 ### Example
 
@@ -447,7 +450,7 @@ No authorization required
 
 ## GetCollectionApproval
 
-> decimal GetCollectionApproval (string collectionId, string operatorAddress, string address = null, string walletId = null)
+> bool GetCollectionApproval (string collectionId, string operatorAddress, string address = null, string walletId = null)
 
 Get collection approval
 
@@ -478,7 +481,7 @@ namespace Example
             try
             {
                 // Get collection approval
-                decimal result = apiInstance.GetCollectionApproval(collectionId, operatorAddress, address, walletId);
+                bool result = apiInstance.GetCollectionApproval(collectionId, operatorAddress, address, walletId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -504,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**decimal**
+**bool**
 
 ### Authorization
 
@@ -1016,7 +1019,7 @@ No authorization required
 
 Get collection items
 
-Returns all collection items as an array of metadata objects.
+Returns all collection items as an array of metadata objects.  Please note that ONLY items that have had at least 1 quantity minted will be returned. If you've created an item that has not been minted yet, it will not be returned in the array response.
 
 ### Example
 
@@ -1079,6 +1082,89 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successfully retrieved collection items metadata. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCollectionRole
+
+> bool GetCollectionRole (string collectionId, string role, string address = null, string walletId = null)
+
+Get collection role
+
+Returns a boolean (true/false) representing if the provided role for this collection has been granted to the provided address or address associated with the provided walletId.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GetCollectionRoleExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new ItemsApi(Configuration.Default);
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var role = minter;  // string | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
+            var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+
+            try
+            {
+                // Get collection role
+                bool result = apiInstance.GetCollectionRole(collectionId, role, address, walletId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling ItemsApi.GetCollectionRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **role** | **string**| A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | 
+ **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+
+### Return type
+
+**bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully retrieved the boolean value representing if the provided role has been granted to the provided address or walletId. |  -  |
 | **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
 
 [[Back to top]](#)
@@ -1164,6 +1250,90 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GrantCollectionRole
+
+> TransactionModel GrantCollectionRole (string collectionId, string xAuthorization, string xPassword, GrantCollectionRoleRequest grantCollectionRoleRequest)
+
+Grant collection role
+
+Grants the provided role for the collection to the provided address or address associated with the provided walletId. Granted roles give different types of authority on behalf of the collection for specific players, addresses, or contracts to perform different types of permissioned collection operations.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GrantCollectionRoleExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new ItemsApi(Configuration.Default);
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
+            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var grantCollectionRoleRequest = new GrantCollectionRoleRequest(); // GrantCollectionRoleRequest | 
+
+            try
+            {
+                // Grant collection role
+                TransactionModel result = apiInstance.GrantCollectionRole(collectionId, xAuthorization, xPassword, grantCollectionRoleRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling ItemsApi.GrantCollectionRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
+ **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **grantCollectionRoleRequest** | [**GrantCollectionRoleRequest**](GrantCollectionRoleRequest.md)|  | 
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully granted the provided role to the provided address or address associated with the provided walletId. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## MintCollectionItem
 
 > TransactionModel MintCollectionItem (string collectionId, decimal collectionItemId, string xAuthorization, string xPassword, MintCollectionItemRequest mintCollectionItemRequest)
@@ -1241,6 +1411,90 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successfully created (minted) the item(s) to the provided wallet address or wallet address of the provided walletId. Returns a transaction object. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RevokeCollectionRole
+
+> TransactionModel RevokeCollectionRole (string collectionId, string xAuthorization, string xPassword, RevokeCollectionRoleRequest revokeCollectionRoleRequest)
+
+Revoke collection role
+
+Revokes the provided role for the collection to the provided address or address associated with the provided walletId.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class RevokeCollectionRoleExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new ItemsApi(Configuration.Default);
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
+            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var revokeCollectionRoleRequest = new RevokeCollectionRoleRequest(); // RevokeCollectionRoleRequest | 
+
+            try
+            {
+                // Revoke collection role
+                TransactionModel result = apiInstance.RevokeCollectionRole(collectionId, xAuthorization, xPassword, revokeCollectionRoleRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling ItemsApi.RevokeCollectionRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
+ **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md)|  | 
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully revoked the provided role from the provided address or address associated with the provided walletId. Returns a transaction object. |  -  |
 | **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
 | **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
 
