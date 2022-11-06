@@ -533,7 +533,7 @@ No authorization required
 
 ## GetCollectionItem
 
-> List&lt;Object&gt; GetCollectionItem (string collectionId, decimal collectionItemId)
+> Object GetCollectionItem (string collectionId, decimal collectionItemId)
 
 Get collection item
 
@@ -562,7 +562,7 @@ namespace Example
             try
             {
                 // Get collection item
-                List<Object> result = apiInstance.GetCollectionItem(collectionId, collectionItemId);
+                Object result = apiInstance.GetCollectionItem(collectionId, collectionItemId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**List<Object>**
+**Object**
 
 ### Authorization
 
