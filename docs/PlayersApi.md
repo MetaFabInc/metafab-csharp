@@ -4,8 +4,10 @@ All URIs are relative to *https://api.trymetafab.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthPlayer**](PlayersApi.md#authplayer) | **GET** /v1/players | Authenticate player
+[**AuthPlayer**](PlayersApi.md#authplayer) | **GET** /v1/players/auth | Authenticate player
 [**CreatePlayer**](PlayersApi.md#createplayer) | **POST** /v1/players | Create player
+[**GetPlayer**](PlayersApi.md#getplayer) | **GET** /v1/players/{playerId} | Get player
+[**GetPlayers**](PlayersApi.md#getplayers) | **GET** /v1/players | Get players
 [**UpdatePlayer**](PlayersApi.md#updateplayer) | **PATCH** /v1/players/{playerId} | Update player
 
 
@@ -164,6 +166,160 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Successfully created a new player. Returns a player object containing a wallet (used to interact with contracts, currencies, etc). |  -  |
 | **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPlayer
+
+> PublicPlayer GetPlayer (string playerId)
+
+Get player
+
+Returns a player object for the provided player id.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GetPlayerExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new PlayersApi(Configuration.Default);
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+
+            try
+            {
+                // Get player
+                PublicPlayer result = apiInstance.GetPlayer(playerId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling PlayersApi.GetPlayer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+
+### Return type
+
+[**PublicPlayer**](PublicPlayer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully retrieved player. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPlayers
+
+> List&lt;PublicPlayer&gt; GetPlayers (string xAuthorization)
+
+Get players
+
+Returns all players for the authenticated game as an array of player objects.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GetPlayersExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new PlayersApi(Configuration.Default);
+            var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
+
+            try
+            {
+                // Get players
+                List<PublicPlayer> result = apiInstance.GetPlayers(xAuthorization);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling PlayersApi.GetPlayers: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
+
+### Return type
+
+[**List&lt;PublicPlayer&gt;**](PublicPlayer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully retrieved players. |  -  |
 | **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
 
 [[Back to top]](#)

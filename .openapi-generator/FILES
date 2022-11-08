@@ -50,6 +50,9 @@ docs/MintCollectionItemRequest.md
 docs/MintCurrencyRequest.md
 docs/PlayerModel.md
 docs/PlayersApi.md
+docs/PublicGame.md
+docs/PublicPlayer.md
+docs/PublicPlayerWallet.md
 docs/RevokeCollectionRoleRequest.md
 docs/SetCollectionApprovalRequest.md
 docs/SetCollectionItemTimelockRequest.md
@@ -126,6 +129,9 @@ src/Org.MetaFab/Model/GrantCurrencyRoleRequest.cs
 src/Org.MetaFab/Model/MintCollectionItemRequest.cs
 src/Org.MetaFab/Model/MintCurrencyRequest.cs
 src/Org.MetaFab/Model/PlayerModel.cs
+src/Org.MetaFab/Model/PublicGame.cs
+src/Org.MetaFab/Model/PublicPlayer.cs
+src/Org.MetaFab/Model/PublicPlayerWallet.cs
 src/Org.MetaFab/Model/RevokeCollectionRoleRequest.cs
 src/Org.MetaFab/Model/SetCollectionApprovalRequest.cs
 src/Org.MetaFab/Model/SetCollectionItemTimelockRequest.cs

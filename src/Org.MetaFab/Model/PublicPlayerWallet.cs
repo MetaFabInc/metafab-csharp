@@ -25,58 +25,35 @@ using OpenAPIDateConverter = Org.MetaFab.Client.OpenAPIDateConverter;
 namespace Org.MetaFab.Model
 {
     /// <summary>
-    /// MintCurrencyRequest
+    /// PublicPlayerWallet
     /// </summary>
     [DataContract]
-    public partial class MintCurrencyRequest :  IEquatable<MintCurrencyRequest>, IValidatableObject
+    public partial class PublicPlayerWallet :  IEquatable<PublicPlayerWallet>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MintCurrencyRequest" /> class.
+        /// Initializes a new instance of the <see cref="PublicPlayerWallet" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected MintCurrencyRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MintCurrencyRequest" /> class.
-        /// </summary>
-        /// <param name="amount">The amount of currency to create (mint). (required).</param>
-        /// <param name="address">A valid EVM based address to create (mint) currency for. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;..</param>
-        /// <param name="walletId">Any wallet id within the MetaFab ecosystem to create (mint) currency for..</param>
-        public MintCurrencyRequest(decimal amount = default(decimal), string address = default(string), string walletId = default(string))
+        /// <param name="id">This field has not had a description added..</param>
+        /// <param name="address">This field has not had a description added..</param>
+        public PublicPlayerWallet(string id = default(string), string address = default(string))
         {
-            // to ensure "amount" is required (not null)
-            if (amount == null)
-            {
-                throw new InvalidDataException("amount is a required property for MintCurrencyRequest and cannot be null");
-            }
-            else
-            {
-                this.Amount = amount;
-            }
-
+            this.Id = id;
             this.Address = address;
-            this.WalletId = walletId;
         }
 
         /// <summary>
-        /// The amount of currency to create (mint).
+        /// This field has not had a description added.
         /// </summary>
-        /// <value>The amount of currency to create (mint).</value>
-        [DataMember(Name="amount", EmitDefaultValue=true)]
-        public decimal Amount { get; set; }
+        /// <value>This field has not had a description added.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public string Id { get; set; }
 
         /// <summary>
-        /// A valid EVM based address to create (mint) currency for. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;.
+        /// This field has not had a description added.
         /// </summary>
-        /// <value>A valid EVM based address to create (mint) currency for. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;.</value>
+        /// <value>This field has not had a description added.</value>
         [DataMember(Name="address", EmitDefaultValue=false)]
         public string Address { get; set; }
-
-        /// <summary>
-        /// Any wallet id within the MetaFab ecosystem to create (mint) currency for.
-        /// </summary>
-        /// <value>Any wallet id within the MetaFab ecosystem to create (mint) currency for.</value>
-        [DataMember(Name="walletId", EmitDefaultValue=false)]
-        public string WalletId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,10 +62,9 @@ namespace Org.MetaFab.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MintCurrencyRequest {\n");
-            sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("class PublicPlayerWallet {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
-            sb.Append("  WalletId: ").Append(WalletId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,34 +85,29 @@ namespace Org.MetaFab.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MintCurrencyRequest);
+            return this.Equals(input as PublicPlayerWallet);
         }
 
         /// <summary>
-        /// Returns true if MintCurrencyRequest instances are equal
+        /// Returns true if PublicPlayerWallet instances are equal
         /// </summary>
-        /// <param name="input">Instance of MintCurrencyRequest to be compared</param>
+        /// <param name="input">Instance of PublicPlayerWallet to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MintCurrencyRequest input)
+        public bool Equals(PublicPlayerWallet input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Amount == input.Amount ||
-                    (this.Amount != null &&
-                    this.Amount.Equals(input.Amount))
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Address == input.Address ||
                     (this.Address != null &&
                     this.Address.Equals(input.Address))
-                ) && 
-                (
-                    this.WalletId == input.WalletId ||
-                    (this.WalletId != null &&
-                    this.WalletId.Equals(input.WalletId))
                 );
         }
 
@@ -149,12 +120,10 @@ namespace Org.MetaFab.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Amount != null)
-                    hashCode = hashCode * 59 + this.Amount.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Address != null)
                     hashCode = hashCode * 59 + this.Address.GetHashCode();
-                if (this.WalletId != null)
-                    hashCode = hashCode * 59 + this.WalletId.GetHashCode();
                 return hashCode;
             }
         }

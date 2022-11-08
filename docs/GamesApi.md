@@ -4,8 +4,9 @@ All URIs are relative to *https://api.trymetafab.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthGame**](GamesApi.md#authgame) | **GET** /v1/games | Authenticate game
+[**AuthGame**](GamesApi.md#authgame) | **GET** /v1/games/auth | Authenticate game
 [**CreateGame**](GamesApi.md#creategame) | **POST** /v1/games | Create game
+[**GetGame**](GamesApi.md#getgame) | **GET** /v1/games/{gameId} | Get game
 [**UpdateGame**](GamesApi.md#updategame) | **PATCH** /v1/games/{gameId} | Update game
 
 
@@ -159,6 +160,83 @@ No authorization required
 | **200** | Successfully created a new game. Returns a game object containing a wallet and fundingWallet property, respectively representing the games primary wallet address (used to deploy &amp; interact with contract) and funding wallet address (used to cover gasless transaction fees). |  -  |
 | **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
 | **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetGame
+
+> PublicGame GetGame (string gameId)
+
+Get game
+
+Returns a game object for the provided game id.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GetGameExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new GamesApi(Configuration.Default);
+            var gameId = "gameId_example";  // string | Any game id within the MetaFab ecosystem.
+
+            try
+            {
+                // Get game
+                PublicGame result = apiInstance.GetGame(gameId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling GamesApi.GetGame: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gameId** | **string**| Any game id within the MetaFab ecosystem. | 
+
+### Return type
+
+[**PublicGame**](PublicGame.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully retrieved game. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
