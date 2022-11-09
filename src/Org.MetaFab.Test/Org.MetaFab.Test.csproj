@@ -4,7 +4,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-The version of the OpenAPI document: 1.2.0
+The version of the OpenAPI document: 1.2.1
 Contact: metafabproject@gmail.com
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">

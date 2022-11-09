@@ -25,40 +25,33 @@ using OpenAPIDateConverter = Org.MetaFab.Client.OpenAPIDateConverter;
 namespace Org.MetaFab.Model
 {
     /// <summary>
-    /// SetCollectionItemTimelockRequest
+    /// GetPlayerData200Response
     /// </summary>
     [DataContract]
-    public partial class SetCollectionItemTimelockRequest :  IEquatable<SetCollectionItemTimelockRequest>, IValidatableObject
+    public partial class GetPlayerData200Response :  IEquatable<GetPlayerData200Response>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SetCollectionItemTimelockRequest" /> class.
+        /// Initializes a new instance of the <see cref="GetPlayerData200Response" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected SetCollectionItemTimelockRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SetCollectionItemTimelockRequest" /> class.
-        /// </summary>
-        /// <param name="timelock">A unix timestamp (in seconds) defining when the set timelock expires. (required).</param>
-        public SetCollectionItemTimelockRequest(decimal timelock = default(decimal))
+        /// <param name="protectedData">protectedData.</param>
+        /// <param name="publicData">publicData.</param>
+        public GetPlayerData200Response(Object protectedData = default(Object), Object publicData = default(Object))
         {
-            // to ensure "timelock" is required (not null)
-            if (timelock == null)
-            {
-                throw new InvalidDataException("timelock is a required property for SetCollectionItemTimelockRequest and cannot be null");
-            }
-            else
-            {
-                this.Timelock = timelock;
-            }
-
+            this.ProtectedData = protectedData;
+            this.PublicData = publicData;
         }
 
         /// <summary>
-        /// A unix timestamp (in seconds) defining when the set timelock expires.
+        /// Gets or Sets ProtectedData
         /// </summary>
-        /// <value>A unix timestamp (in seconds) defining when the set timelock expires.</value>
-        [DataMember(Name="timelock", EmitDefaultValue=true)]
-        public decimal Timelock { get; set; }
+        [DataMember(Name="protectedData", EmitDefaultValue=false)]
+        public Object ProtectedData { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PublicData
+        /// </summary>
+        [DataMember(Name="publicData", EmitDefaultValue=false)]
+        public Object PublicData { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,8 +60,9 @@ namespace Org.MetaFab.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SetCollectionItemTimelockRequest {\n");
-            sb.Append("  Timelock: ").Append(Timelock).Append("\n");
+            sb.Append("class GetPlayerData200Response {\n");
+            sb.Append("  ProtectedData: ").Append(ProtectedData).Append("\n");
+            sb.Append("  PublicData: ").Append(PublicData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,24 +83,29 @@ namespace Org.MetaFab.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SetCollectionItemTimelockRequest);
+            return this.Equals(input as GetPlayerData200Response);
         }
 
         /// <summary>
-        /// Returns true if SetCollectionItemTimelockRequest instances are equal
+        /// Returns true if GetPlayerData200Response instances are equal
         /// </summary>
-        /// <param name="input">Instance of SetCollectionItemTimelockRequest to be compared</param>
+        /// <param name="input">Instance of GetPlayerData200Response to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SetCollectionItemTimelockRequest input)
+        public bool Equals(GetPlayerData200Response input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Timelock == input.Timelock ||
-                    (this.Timelock != null &&
-                    this.Timelock.Equals(input.Timelock))
+                    this.ProtectedData == input.ProtectedData ||
+                    (this.ProtectedData != null &&
+                    this.ProtectedData.Equals(input.ProtectedData))
+                ) && 
+                (
+                    this.PublicData == input.PublicData ||
+                    (this.PublicData != null &&
+                    this.PublicData.Equals(input.PublicData))
                 );
         }
 
@@ -119,8 +118,10 @@ namespace Org.MetaFab.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Timelock != null)
-                    hashCode = hashCode * 59 + this.Timelock.GetHashCode();
+                if (this.ProtectedData != null)
+                    hashCode = hashCode * 59 + this.ProtectedData.GetHashCode();
+                if (this.PublicData != null)
+                    hashCode = hashCode * 59 + this.PublicData.GetHashCode();
                 return hashCode;
             }
         }

@@ -43,6 +43,7 @@ docs/GetCurrencies200ResponseInner.md
 docs/GetCurrencies200ResponseInnerAllOf.md
 docs/GetCurrencyFees200Response.md
 docs/GetExchanges200ResponseInner.md
+docs/GetPlayerData200Response.md
 docs/GrantCollectionRoleRequest.md
 docs/GrantCurrencyRoleRequest.md
 docs/ItemsApi.md
@@ -58,6 +59,7 @@ docs/SetCollectionApprovalRequest.md
 docs/SetCollectionItemTimelockRequest.md
 docs/SetCurrencyFeesRequest.md
 docs/SetExchangeOfferRequest.md
+docs/SetPlayerDataRequest.md
 docs/TransactionModel.md
 docs/TransactionsApi.md
 docs/TransferCollectionItemRequest.md
@@ -124,6 +126,7 @@ src/Org.MetaFab/Model/GetCurrencies200ResponseInner.cs
 src/Org.MetaFab/Model/GetCurrencies200ResponseInnerAllOf.cs
 src/Org.MetaFab/Model/GetCurrencyFees200Response.cs
 src/Org.MetaFab/Model/GetExchanges200ResponseInner.cs
+src/Org.MetaFab/Model/GetPlayerData200Response.cs
 src/Org.MetaFab/Model/GrantCollectionRoleRequest.cs
 src/Org.MetaFab/Model/GrantCurrencyRoleRequest.cs
 src/Org.MetaFab/Model/MintCollectionItemRequest.cs
@@ -137,6 +140,7 @@ src/Org.MetaFab/Model/SetCollectionApprovalRequest.cs
 src/Org.MetaFab/Model/SetCollectionItemTimelockRequest.cs
 src/Org.MetaFab/Model/SetCurrencyFeesRequest.cs
 src/Org.MetaFab/Model/SetExchangeOfferRequest.cs
+src/Org.MetaFab/Model/SetPlayerDataRequest.cs
 src/Org.MetaFab/Model/TransactionModel.cs
 src/Org.MetaFab/Model/TransferCollectionItemRequest.cs
 src/Org.MetaFab/Model/TransferCurrencyRequest.cs

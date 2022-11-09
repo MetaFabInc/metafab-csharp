@@ -7,7 +7,9 @@ Method | HTTP request | Description
 [**AuthPlayer**](PlayersApi.md#authplayer) | **GET** /v1/players/auth | Authenticate player
 [**CreatePlayer**](PlayersApi.md#createplayer) | **POST** /v1/players | Create player
 [**GetPlayer**](PlayersApi.md#getplayer) | **GET** /v1/players/{playerId} | Get player
+[**GetPlayerData**](PlayersApi.md#getplayerdata) | **GET** /v1/players/{playerId}/data | Get player data
 [**GetPlayers**](PlayersApi.md#getplayers) | **GET** /v1/players | Get players
+[**SetPlayerData**](PlayersApi.md#setplayerdata) | **POST** /v1/players/{playerId}/data | Set player data
 [**UpdatePlayer**](PlayersApi.md#updateplayer) | **PATCH** /v1/players/{playerId} | Update player
 
 
@@ -251,6 +253,83 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetPlayerData
+
+> GetPlayerData200Response GetPlayerData (string playerId)
+
+Get player data
+
+Returns the latest public and protected data as an object for the provided playerId.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class GetPlayerDataExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new PlayersApi(Configuration.Default);
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+
+            try
+            {
+                // Get player data
+                GetPlayerData200Response result = apiInstance.GetPlayerData(playerId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling PlayersApi.GetPlayerData: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+
+### Return type
+
+[**GetPlayerData200Response**](GetPlayerData200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully retrieved player data. Returns latest player data object. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetPlayers
 
 > List&lt;PublicPlayer&gt; GetPlayers (string xAuthorization)
@@ -320,6 +399,87 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successfully retrieved players. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetPlayerData
+
+> GetPlayerData200Response SetPlayerData (string playerId, string xAuthorization, SetPlayerDataRequest setPlayerDataRequest)
+
+Set player data
+
+Creates or updates public and/or protected data for the provided playerId. Data updates are performed using deep merging. This means that when you update any top level or nested properties specific to player public or protected data, you only need to include the properties you are making changes to. Any existing properties not included in request body arguments will be retained on the player data object.  Please note, When writing an array type for a player, arrays do not follow the deep merge approach. If you add or remove an item from an array, the entire array must be passed as an argument when updating the related property for player public or protected data.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class SetPlayerDataExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new PlayersApi(Configuration.Default);
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
+            var setPlayerDataRequest = new SetPlayerDataRequest(); // SetPlayerDataRequest | 
+
+            try
+            {
+                // Set player data
+                GetPlayerData200Response result = apiInstance.SetPlayerData(playerId, xAuthorization, setPlayerDataRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling PlayersApi.SetPlayerData: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
+ **setPlayerDataRequest** | [**SetPlayerDataRequest**](SetPlayerDataRequest.md)|  | 
+
+### Return type
+
+[**GetPlayerData200Response**](GetPlayerData200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully set player data. Returns latest player data object. |  -  |
 | **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
 
 [[Back to top]](#)
