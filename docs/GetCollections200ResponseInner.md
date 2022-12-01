@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ContractId** | **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | **string** | This field has not had a description added. | [optional] 
-**Contract** | [**CollectionModel**](CollectionModel.md) |  | [optional] 
+**Contract** | [**ContractModel**](ContractModel.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

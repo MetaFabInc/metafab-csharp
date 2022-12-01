@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Quantity** | **decimal** | The quantity of the collectionItemId to burn. | 
+**Quantity** | **int** | The quantity of the collectionItemId to burn. | 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

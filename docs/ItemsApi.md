@@ -612,7 +612,7 @@ No authorization required
 
 ## GetCollectionItemBalance
 
-> decimal GetCollectionItemBalance (string collectionId, decimal collectionItemId, string address = null, string walletId = null)
+> int GetCollectionItemBalance (string collectionId, decimal collectionItemId, string address = null, string walletId = null)
 
 Get collection item balance
 
@@ -643,7 +643,7 @@ namespace Example
             try
             {
                 // Get collection item balance
-                decimal result = apiInstance.GetCollectionItemBalance(collectionId, collectionItemId, address, walletId);
+                int result = apiInstance.GetCollectionItemBalance(collectionId, collectionItemId, address, walletId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -669,7 +669,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**decimal**
+**int**
 
 ### Authorization
 
@@ -695,7 +695,7 @@ No authorization required
 
 ## GetCollectionItemBalances
 
-> Dictionary&lt;string, decimal&gt; GetCollectionItemBalances (string collectionId, string address = null, string walletId = null)
+> Dictionary&lt;string, int&gt; GetCollectionItemBalances (string collectionId, string address = null, string walletId = null)
 
 Get collection item balances
 
@@ -725,7 +725,7 @@ namespace Example
             try
             {
                 // Get collection item balances
-                Dictionary<string, decimal> result = apiInstance.GetCollectionItemBalances(collectionId, address, walletId);
+                Dictionary<string, int> result = apiInstance.GetCollectionItemBalances(collectionId, address, walletId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -750,7 +750,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dictionary<string, decimal>**
+**Dictionary<string, int>**
 
 ### Authorization
 
@@ -776,7 +776,7 @@ No authorization required
 
 ## GetCollectionItemSupplies
 
-> Dictionary&lt;string, decimal&gt; GetCollectionItemSupplies (string collectionId)
+> Dictionary&lt;string, int&gt; GetCollectionItemSupplies (string collectionId)
 
 Get collection item supplies
 
@@ -804,7 +804,7 @@ namespace Example
             try
             {
                 // Get collection item supplies
-                Dictionary<string, decimal> result = apiInstance.GetCollectionItemSupplies(collectionId);
+                Dictionary<string, int> result = apiInstance.GetCollectionItemSupplies(collectionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -827,7 +827,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dictionary<string, decimal>**
+**Dictionary<string, int>**
 
 ### Authorization
 
@@ -853,7 +853,7 @@ No authorization required
 
 ## GetCollectionItemSupply
 
-> decimal GetCollectionItemSupply (string collectionId, decimal collectionItemId, string address = null, string walletId = null)
+> int GetCollectionItemSupply (string collectionId, decimal collectionItemId, string address = null, string walletId = null)
 
 Get collection item supply
 
@@ -884,7 +884,7 @@ namespace Example
             try
             {
                 // Get collection item supply
-                decimal result = apiInstance.GetCollectionItemSupply(collectionId, collectionItemId, address, walletId);
+                int result = apiInstance.GetCollectionItemSupply(collectionId, collectionItemId, address, walletId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -910,7 +910,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**decimal**
+**int**
 
 ### Authorization
 
@@ -936,7 +936,7 @@ No authorization required
 
 ## GetCollectionItemTimelock
 
-> decimal GetCollectionItemTimelock (string collectionId, decimal collectionItemId)
+> int GetCollectionItemTimelock (string collectionId, decimal collectionItemId)
 
 Get collection item timelock
 
@@ -965,7 +965,7 @@ namespace Example
             try
             {
                 // Get collection item timelock
-                decimal result = apiInstance.GetCollectionItemTimelock(collectionId, collectionItemId);
+                int result = apiInstance.GetCollectionItemTimelock(collectionId, collectionItemId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -989,7 +989,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**decimal**
+**int**
 
 ### Authorization
 

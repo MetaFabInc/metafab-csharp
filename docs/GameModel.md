@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Rpcs** | **Object** | This field has not had a description added. | [optional] 
 **PublishedKey** | **string** | This field has not had a description added. | [optional] 
 **SecretKey** | **string** | This field has not had a description added. | [optional] 
+**Verified** | **bool** | This field has not had a description added. | [optional] 
 **UpdatedAt** | **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | **string** | This field has not had a description added. | [optional] 
 
