@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Abi** | **Object** | This field has not had a description added. | [optional] 
 **Type** | **string** | This field has not had a description added. | [optional] 
 **Address** | **string** | This field has not had a description added. | [optional] 
+**ForwarderAddress** | **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | **string** | This field has not had a description added. | [optional] 
 

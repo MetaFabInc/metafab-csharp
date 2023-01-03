@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**GetPlayer**](PlayersApi.md#getplayer) | **GET** /v1/players/{playerId} | Get player
 [**GetPlayerData**](PlayersApi.md#getplayerdata) | **GET** /v1/players/{playerId}/data | Get player data
 [**GetPlayers**](PlayersApi.md#getplayers) | **GET** /v1/players | Get players
+[**RemovePlayerConnectedWallet**](PlayersApi.md#removeplayerconnectedwallet) | **DELETE** /v1/players/{playerId}/wallets/{playerWalletId} | Remove player connected wallet
+[**SetPlayerConnectedWallet**](PlayersApi.md#setplayerconnectedwallet) | **POST** /v1/players/{playerId}/wallets | Set player connected wallet
 [**SetPlayerData**](PlayersApi.md#setplayerdata) | **POST** /v1/players/{playerId}/data | Set player data
 [**UpdatePlayer**](PlayersApi.md#updateplayer) | **PATCH** /v1/players/{playerId} | Update player
 
@@ -399,6 +401,169 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successfully retrieved players. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemovePlayerConnectedWallet
+
+> void RemovePlayerConnectedWallet (string playerId, string playerWalletId, RemovePlayerConnectedWalletRequest removePlayerConnectedWalletRequest)
+
+Remove player connected wallet
+
+Removes an external wallet from a player account. The player's wallet is reverted to their custodial wallet.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class RemovePlayerConnectedWalletExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new PlayersApi(Configuration.Default);
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var playerWalletId = "playerWalletId_example";  // string | Any player wallet id within the MetaFab ecosystem.
+            var removePlayerConnectedWalletRequest = new RemovePlayerConnectedWalletRequest(); // RemovePlayerConnectedWalletRequest | 
+
+            try
+            {
+                // Remove player connected wallet
+                apiInstance.RemovePlayerConnectedWallet(playerId, playerWalletId, removePlayerConnectedWalletRequest);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling PlayersApi.RemovePlayerConnectedWallet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **playerWalletId** | **string**| Any player wallet id within the MetaFab ecosystem. | 
+ **removePlayerConnectedWalletRequest** | [**RemovePlayerConnectedWalletRequest**](RemovePlayerConnectedWalletRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully removed the player&#39;s external wallet. Returns an empty 200 response. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
+| **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetPlayerConnectedWallet
+
+> SetPlayerConnectedWallet200Response SetPlayerConnectedWallet (string playerId, string xAuthorization, SetPlayerConnectedWalletRequest setPlayerConnectedWalletRequest)
+
+Set player connected wallet
+
+Sets an external wallet as the wallet for a player account. The set wallet can transact gaslessly with all MetaFab related systems through the same MetaFab API calls as custodial wallets without requiring transaction signing or private keys.  This is done through an internal system MetaFab has created that allows an external connected wallet to delegate transaction signing for a specific game's set of contracts to a player's password protected custodial wallet. This allow the custodial wallet to sign and submit transactions to a specific game's related contracts as if they were signed and submitted by the connected external wallet. This also means that all earned tokens, purchased items and any interactions happen and are recorded on chain as the external connected wallet. No additional logic needs to be writted by developers to support both custodial and external wallets, everything just works.  Finally, this endpoint is meant for advanced users. The majority of developers who want to implement external wallet support for their game can do so without any extra work through our whitelabeled wallet connection feature that implements this endpoint underneath the hood without any required work.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.MetaFab.Api;
+using Org.MetaFab.Client;
+using Org.MetaFab.Model;
+
+namespace Example
+{
+    public class SetPlayerConnectedWalletExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://api.trymetafab.com";
+            var apiInstance = new PlayersApi(Configuration.Default);
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var xAuthorization = player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `accessToken` of the authenticating player.
+            var setPlayerConnectedWalletRequest = new SetPlayerConnectedWalletRequest(); // SetPlayerConnectedWalletRequest | 
+
+            try
+            {
+                // Set player connected wallet
+                SetPlayerConnectedWallet200Response result = apiInstance.SetPlayerConnectedWallet(playerId, xAuthorization, setPlayerConnectedWalletRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling PlayersApi.SetPlayerConnectedWallet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **xAuthorization** | **string**| The &#x60;accessToken&#x60; of the authenticating player. | 
+ **setPlayerConnectedWalletRequest** | [**SetPlayerConnectedWalletRequest**](SetPlayerConnectedWalletRequest.md)|  | 
+
+### Return type
+
+[**SetPlayerConnectedWallet200Response**](SetPlayerConnectedWallet200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully set the player&#39;s external wallet. Returns the connected wallet id and address, as well as connection transaction object. |  -  |
+| **400** | An API level error occurred. This is often due to problematic data being provided by you. |  -  |
 | **401** | An authorization error occured. This is often due to incorrect tokens or keys being provided, or accessing a resource that the provided tokens or keys do not have access to. |  -  |
 
 [[Back to top]](#)

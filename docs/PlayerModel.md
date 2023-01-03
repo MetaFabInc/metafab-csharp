@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Id** | **string** | This field has not had a description added. | [optional] 
 **GameId** | **string** | This field has not had a description added. | [optional] 
 **WalletId** | **string** | This field has not had a description added. | [optional] 
+**ConnectedWalletId** | **string** | This field has not had a description added. | [optional] 
 **Username** | **string** | This field has not had a description added. | [optional] 
 **AccessToken** | **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | **string** | This field has not had a description added. | [optional] 
