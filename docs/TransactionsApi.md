@@ -33,7 +33,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new TransactionsApi(Configuration.Default);
-            var transactionId = "transactionId_example";  // string | Any transaction id within the MetaFab ecosystem.
+            var transactionId = "transactionId_example";  // string | Any transaction id within the MetaFab platform.
 
             try
             {
@@ -57,7 +57,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transactionId** | **string**| Any transaction id within the MetaFab ecosystem. | 
+ **transactionId** | **string**| Any transaction id within the MetaFab platform. | 
 
 ### Return type
 

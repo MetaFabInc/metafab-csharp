@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## BatchTransferCurrency
 
-> TransactionModel BatchTransferCurrency (string currencyId, string xAuthorization, string xPassword, BatchTransferCurrencyRequest batchTransferCurrencyRequest)
+> TransactionModel BatchTransferCurrency (string currencyId, string xAuthorization, string xWalletDecryptKey, BatchTransferCurrencyRequest batchTransferCurrencyRequest)
 
 Batch transfer currency
 
@@ -44,15 +44,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var batchTransferCurrencyRequest = new BatchTransferCurrencyRequest(); // BatchTransferCurrencyRequest | 
 
             try
             {
                 // Batch transfer currency
-                TransactionModel result = apiInstance.BatchTransferCurrency(currencyId, xAuthorization, xPassword, batchTransferCurrencyRequest);
+                TransactionModel result = apiInstance.BatchTransferCurrency(currencyId, xAuthorization, xWalletDecryptKey, batchTransferCurrencyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -71,9 +71,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **batchTransferCurrencyRequest** | [**BatchTransferCurrencyRequest**](BatchTransferCurrencyRequest.md)|  | 
 
 ### Return type
@@ -105,7 +105,7 @@ No authorization required
 
 ## BurnCurrency
 
-> TransactionModel BurnCurrency (string currencyId, string xAuthorization, string xPassword, BurnCurrencyRequest burnCurrencyRequest)
+> TransactionModel BurnCurrency (string currencyId, string xAuthorization, string xWalletDecryptKey, BurnCurrencyRequest burnCurrencyRequest)
 
 Burn currency
 
@@ -128,15 +128,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var burnCurrencyRequest = new BurnCurrencyRequest(); // BurnCurrencyRequest | 
 
             try
             {
                 // Burn currency
-                TransactionModel result = apiInstance.BurnCurrency(currencyId, xAuthorization, xPassword, burnCurrencyRequest);
+                TransactionModel result = apiInstance.BurnCurrency(currencyId, xAuthorization, xWalletDecryptKey, burnCurrencyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -155,9 +155,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **burnCurrencyRequest** | [**BurnCurrencyRequest**](BurnCurrencyRequest.md)|  | 
 
 ### Return type
@@ -189,7 +189,7 @@ No authorization required
 
 ## CreateCurrency
 
-> CreateCurrency200Response CreateCurrency (string xAuthorization, string xPassword, CreateCurrencyRequest createCurrencyRequest)
+> CreateCurrency200Response CreateCurrency (string xAuthorization, string xWalletDecryptKey, CreateCurrencyRequest createCurrencyRequest)
 
 Create currency
 
@@ -213,13 +213,13 @@ namespace Example
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var createCurrencyRequest = new CreateCurrencyRequest(); // CreateCurrencyRequest | 
 
             try
             {
                 // Create currency
-                CreateCurrency200Response result = apiInstance.CreateCurrency(xAuthorization, xPassword, createCurrencyRequest);
+                CreateCurrency200Response result = apiInstance.CreateCurrency(xAuthorization, xWalletDecryptKey, createCurrencyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -239,7 +239,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createCurrencyRequest** | [**CreateCurrencyRequest**](CreateCurrencyRequest.md)|  | 
 
 ### Return type
@@ -371,9 +371,9 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
-            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab platform. (optional) 
 
             try
             {
@@ -397,9 +397,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
- **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab platform. | [optional] 
 
 ### Return type
 
@@ -452,7 +452,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
 
             try
             {
@@ -476,7 +476,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
 
 ### Return type
 
@@ -529,10 +529,10 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var role = minter;  // string | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
             var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
-            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab platform. (optional) 
 
             try
             {
@@ -556,10 +556,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **role** | **string**| A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | 
  **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
- **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab platform. | [optional] 
 
 ### Return type
 
@@ -589,7 +589,7 @@ No authorization required
 
 ## GrantCurrencyRole
 
-> TransactionModel GrantCurrencyRole (string currencyId, string xAuthorization, string xPassword, GrantCurrencyRoleRequest grantCurrencyRoleRequest)
+> TransactionModel GrantCurrencyRole (string currencyId, string xAuthorization, string xWalletDecryptKey, GrantCurrencyRoleRequest grantCurrencyRoleRequest)
 
 Grant currency role
 
@@ -612,15 +612,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var grantCurrencyRoleRequest = new GrantCurrencyRoleRequest(); // GrantCurrencyRoleRequest | 
 
             try
             {
                 // Grant currency role
-                TransactionModel result = apiInstance.GrantCurrencyRole(currencyId, xAuthorization, xPassword, grantCurrencyRoleRequest);
+                TransactionModel result = apiInstance.GrantCurrencyRole(currencyId, xAuthorization, xWalletDecryptKey, grantCurrencyRoleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -639,9 +639,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **grantCurrencyRoleRequest** | [**GrantCurrencyRoleRequest**](GrantCurrencyRoleRequest.md)|  | 
 
 ### Return type
@@ -673,7 +673,7 @@ No authorization required
 
 ## MintCurrency
 
-> TransactionModel MintCurrency (string currencyId, string xAuthorization, string xPassword, MintCurrencyRequest mintCurrencyRequest)
+> TransactionModel MintCurrency (string currencyId, string xAuthorization, string xWalletDecryptKey, MintCurrencyRequest mintCurrencyRequest)
 
 Mint currency
 
@@ -696,15 +696,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var mintCurrencyRequest = new MintCurrencyRequest(); // MintCurrencyRequest | 
 
             try
             {
                 // Mint currency
-                TransactionModel result = apiInstance.MintCurrency(currencyId, xAuthorization, xPassword, mintCurrencyRequest);
+                TransactionModel result = apiInstance.MintCurrency(currencyId, xAuthorization, xWalletDecryptKey, mintCurrencyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -723,9 +723,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **mintCurrencyRequest** | [**MintCurrencyRequest**](MintCurrencyRequest.md)|  | 
 
 ### Return type
@@ -757,7 +757,7 @@ No authorization required
 
 ## RevokeCurrencyRole
 
-> TransactionModel RevokeCurrencyRole (string currencyId, string xAuthorization, string xPassword, RevokeCollectionRoleRequest revokeCollectionRoleRequest)
+> TransactionModel RevokeCurrencyRole (string currencyId, string xAuthorization, string xWalletDecryptKey, RevokeCollectionRoleRequest revokeCollectionRoleRequest)
 
 Revoke currency role
 
@@ -780,15 +780,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var revokeCollectionRoleRequest = new RevokeCollectionRoleRequest(); // RevokeCollectionRoleRequest | 
 
             try
             {
                 // Revoke currency role
-                TransactionModel result = apiInstance.RevokeCurrencyRole(currencyId, xAuthorization, xPassword, revokeCollectionRoleRequest);
+                TransactionModel result = apiInstance.RevokeCurrencyRole(currencyId, xAuthorization, xWalletDecryptKey, revokeCollectionRoleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -807,9 +807,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md)|  | 
 
 ### Return type
@@ -841,7 +841,7 @@ No authorization required
 
 ## SetCurrencyFees
 
-> TransactionModel SetCurrencyFees (string currencyId, string xAuthorization, string xPassword, SetCurrencyFeesRequest setCurrencyFeesRequest)
+> TransactionModel SetCurrencyFees (string currencyId, string xAuthorization, string xWalletDecryptKey, SetCurrencyFeesRequest setCurrencyFeesRequest)
 
 Set currency fees
 
@@ -864,15 +864,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var setCurrencyFeesRequest = new SetCurrencyFeesRequest(); // SetCurrencyFeesRequest | 
 
             try
             {
                 // Set currency fees
-                TransactionModel result = apiInstance.SetCurrencyFees(currencyId, xAuthorization, xPassword, setCurrencyFeesRequest);
+                TransactionModel result = apiInstance.SetCurrencyFees(currencyId, xAuthorization, xWalletDecryptKey, setCurrencyFeesRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -891,9 +891,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setCurrencyFeesRequest** | [**SetCurrencyFeesRequest**](SetCurrencyFeesRequest.md)|  | 
 
 ### Return type
@@ -925,7 +925,7 @@ No authorization required
 
 ## TransferCurrency
 
-> TransactionModel TransferCurrency (string currencyId, string xAuthorization, string xPassword, TransferCurrencyRequest transferCurrencyRequest)
+> TransactionModel TransferCurrency (string currencyId, string xAuthorization, string xWalletDecryptKey, TransferCurrencyRequest transferCurrencyRequest)
 
 Transfer currency
 
@@ -948,15 +948,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new CurrenciesApi(Configuration.Default);
-            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab ecosystem.
+            var currencyId = "currencyId_example";  // string | Any currency id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var transferCurrencyRequest = new TransferCurrencyRequest(); // TransferCurrencyRequest | 
 
             try
             {
                 // Transfer currency
-                TransactionModel result = apiInstance.TransferCurrency(currencyId, xAuthorization, xPassword, transferCurrencyRequest);
+                TransactionModel result = apiInstance.TransferCurrency(currencyId, xAuthorization, xWalletDecryptKey, transferCurrencyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -975,9 +975,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyId** | **string**| Any currency id within the MetaFab ecosystem. | 
+ **currencyId** | **string**| Any currency id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **transferCurrencyRequest** | [**TransferCurrencyRequest**](TransferCurrencyRequest.md)|  | 
 
 ### Return type

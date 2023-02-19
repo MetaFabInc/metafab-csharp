@@ -192,7 +192,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new GamesApi(Configuration.Default);
-            var gameId = "gameId_example";  // string | Any game id within the MetaFab ecosystem.
+            var gameId = "gameId_example";  // string | Any game id within the MetaFab platform.
 
             try
             {
@@ -216,7 +216,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **gameId** | **string**| Any game id within the MetaFab ecosystem. | 
+ **gameId** | **string**| Any game id within the MetaFab platform. | 
 
 ### Return type
 
@@ -246,7 +246,7 @@ No authorization required
 
 ## UpdateGame
 
-> GameModel UpdateGame (string gameId, string xAuthorization, UpdateGameRequest updateGameRequest)
+> UpdateGame200Response UpdateGame (string gameId, string xAuthorization, UpdateGameRequest updateGameRequest)
 
 Update game
 
@@ -269,14 +269,14 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new GamesApi(Configuration.Default);
-            var gameId = "gameId_example";  // string | Any game id within the MetaFab ecosystem.
+            var gameId = "gameId_example";  // string | The game id of the authenticating game.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
             var updateGameRequest = new UpdateGameRequest(); // UpdateGameRequest | 
 
             try
             {
                 // Update game
-                GameModel result = apiInstance.UpdateGame(gameId, xAuthorization, updateGameRequest);
+                UpdateGame200Response result = apiInstance.UpdateGame(gameId, xAuthorization, updateGameRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -295,13 +295,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **gameId** | **string**| Any game id within the MetaFab ecosystem. | 
+ **gameId** | **string**| The game id of the authenticating game. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
  **updateGameRequest** | [**UpdateGameRequest**](UpdateGameRequest.md)|  | 
 
 ### Return type
 
-[**GameModel**](GameModel.md)
+[**UpdateGame200Response**](UpdateGame200Response.md)
 
 ### Authorization
 

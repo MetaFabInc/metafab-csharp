@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **GameId** | **string** | This field has not had a description added. | [optional] 
 **WalletId** | **string** | This field has not had a description added. | [optional] 
 **ConnectedWalletId** | **string** | This field has not had a description added. | [optional] 
+**ProfileId** | **string** | This field has not had a description added. | [optional] 
 **Username** | **string** | This field has not had a description added. | [optional] 
 **AccessToken** | **string** | This field has not had a description added. | [optional] 
+**ProfilePermissions** | **Object** | This field has not had a description added. | [optional] 
 **UpdatedAt** | **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | **string** | This field has not had a description added. | [optional] 
 

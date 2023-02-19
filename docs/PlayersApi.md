@@ -203,7 +203,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new PlayersApi(Configuration.Default);
-            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab platform.
 
             try
             {
@@ -227,7 +227,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **playerId** | **string**| Any player id within the MetaFab platform. | 
 
 ### Return type
 
@@ -280,7 +280,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new PlayersApi(Configuration.Default);
-            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab platform.
 
             try
             {
@@ -304,7 +304,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **playerId** | **string**| Any player id within the MetaFab platform. | 
 
 ### Return type
 
@@ -434,8 +434,8 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new PlayersApi(Configuration.Default);
-            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
-            var playerWalletId = "playerWalletId_example";  // string | Any player wallet id within the MetaFab ecosystem.
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab platform.
+            var playerWalletId = "playerWalletId_example";  // string | Any player wallet id within the MetaFab platform.
             var removePlayerConnectedWalletRequest = new RemovePlayerConnectedWalletRequest(); // RemovePlayerConnectedWalletRequest | 
 
             try
@@ -459,8 +459,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
- **playerWalletId** | **string**| Any player wallet id within the MetaFab ecosystem. | 
+ **playerId** | **string**| Any player id within the MetaFab platform. | 
+ **playerWalletId** | **string**| Any player wallet id within the MetaFab platform. | 
  **removePlayerConnectedWalletRequest** | [**RemovePlayerConnectedWalletRequest**](RemovePlayerConnectedWalletRequest.md)|  | 
 
 ### Return type
@@ -515,7 +515,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new PlayersApi(Configuration.Default);
-            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var playerId = "playerId_example";  // string | The player id of the authenticating player.
             var xAuthorization = player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `accessToken` of the authenticating player.
             var setPlayerConnectedWalletRequest = new SetPlayerConnectedWalletRequest(); // SetPlayerConnectedWalletRequest | 
 
@@ -541,7 +541,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **playerId** | **string**| The player id of the authenticating player. | 
  **xAuthorization** | **string**| The &#x60;accessToken&#x60; of the authenticating player. | 
  **setPlayerConnectedWalletRequest** | [**SetPlayerConnectedWalletRequest**](SetPlayerConnectedWalletRequest.md)|  | 
 
@@ -597,7 +597,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new PlayersApi(Configuration.Default);
-            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var playerId = "playerId_example";  // string | Any player id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
             var setPlayerDataRequest = new SetPlayerDataRequest(); // SetPlayerDataRequest | 
 
@@ -623,7 +623,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **playerId** | **string**| Any player id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
  **setPlayerDataRequest** | [**SetPlayerDataRequest**](SetPlayerDataRequest.md)|  | 
 
@@ -655,7 +655,7 @@ No authorization required
 
 ## UpdatePlayer
 
-> PlayerModel UpdatePlayer (string playerId, string xAuthorization, UpdatePlayerRequest updatePlayerRequest)
+> UpdatePlayer200Response UpdatePlayer (string playerId, string xAuthorization, UpdatePlayerRequest updatePlayerRequest)
 
 Update player
 
@@ -678,14 +678,14 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new PlayersApi(Configuration.Default);
-            var playerId = "playerId_example";  // string | Any player id within the MetaFab ecosystem.
+            var playerId = "playerId_example";  // string | The player id of the authenticating player.
             var xAuthorization = player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `accessToken` of the authenticating player.
             var updatePlayerRequest = new UpdatePlayerRequest(); // UpdatePlayerRequest | 
 
             try
             {
                 // Update player
-                PlayerModel result = apiInstance.UpdatePlayer(playerId, xAuthorization, updatePlayerRequest);
+                UpdatePlayer200Response result = apiInstance.UpdatePlayer(playerId, xAuthorization, updatePlayerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -704,13 +704,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **string**| Any player id within the MetaFab ecosystem. | 
+ **playerId** | **string**| The player id of the authenticating player. | 
  **xAuthorization** | **string**| The &#x60;accessToken&#x60; of the authenticating player. | 
  **updatePlayerRequest** | [**UpdatePlayerRequest**](UpdatePlayerRequest.md)|  | 
 
 ### Return type
 
-[**PlayerModel**](PlayerModel.md)
+[**UpdatePlayer200Response**](UpdatePlayer200Response.md)
 
 ### Authorization
 

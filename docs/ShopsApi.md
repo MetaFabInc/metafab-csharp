@@ -5,7 +5,7 @@ All URIs are relative to *https://api.trymetafab.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateShop**](ShopsApi.md#createshop) | **POST** /v1/shops | Create shop
-[**GetShopOffer**](ShopsApi.md#getshopoffer) | **GET** /v1/shops/{shopId}/items/{shopOfferId} | Get shop offer
+[**GetShopOffer**](ShopsApi.md#getshopoffer) | **GET** /v1/shops/{shopId}/offers/{shopOfferId} | Get shop offer
 [**GetShopOffers**](ShopsApi.md#getshopoffers) | **GET** /v1/shops/{shopId}/offers | Get shop offers
 [**GetShops**](ShopsApi.md#getshops) | **GET** /v1/shops | Get shops
 [**RemoveShopOffer**](ShopsApi.md#removeshopoffer) | **DELETE** /v1/shops/{shopId}/offers/{shopOfferId} | Remove shop offer
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateShop
 
-> CreateShop200Response CreateShop (string xAuthorization, string xPassword, CreateShopRequest createShopRequest)
+> CreateShop200Response CreateShop (string xAuthorization, string xWalletDecryptKey, CreateShopRequest createShopRequest)
 
 Create shop
 
@@ -41,13 +41,13 @@ namespace Example
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ShopsApi(Configuration.Default);
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var createShopRequest = new CreateShopRequest(); // CreateShopRequest | 
 
             try
             {
                 // Create shop
-                CreateShop200Response result = apiInstance.CreateShop(xAuthorization, xPassword, createShopRequest);
+                CreateShop200Response result = apiInstance.CreateShop(xAuthorization, xWalletDecryptKey, createShopRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -67,7 +67,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createShopRequest** | [**CreateShopRequest**](CreateShopRequest.md)|  | 
 
 ### Return type
@@ -122,7 +122,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ShopsApi(Configuration.Default);
-            var shopId = "shopId_example";  // string | Any shop id within the MetaFab ecosystem.
+            var shopId = "shopId_example";  // string | Any shop id within the MetaFab platform.
             var shopOfferId = "shopOfferId_example";  // string | Any offer id for the shop. Zero, or a positive integer.
 
             try
@@ -147,7 +147,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shopId** | **string**| Any shop id within the MetaFab ecosystem. | 
+ **shopId** | **string**| Any shop id within the MetaFab platform. | 
  **shopOfferId** | **string**| Any offer id for the shop. Zero, or a positive integer. | 
 
 ### Return type
@@ -201,7 +201,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ShopsApi(Configuration.Default);
-            var shopId = "shopId_example";  // string | Any shop id within the MetaFab ecosystem.
+            var shopId = "shopId_example";  // string | Any shop id within the MetaFab platform.
 
             try
             {
@@ -225,7 +225,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shopId** | **string**| Any shop id within the MetaFab ecosystem. | 
+ **shopId** | **string**| Any shop id within the MetaFab platform. | 
 
 ### Return type
 
@@ -332,7 +332,7 @@ No authorization required
 
 ## RemoveShopOffer
 
-> TransactionModel RemoveShopOffer (string shopId, string shopOfferId, string xAuthorization, string xPassword)
+> TransactionModel RemoveShopOffer (string shopId, string shopOfferId, string xAuthorization, string xWalletDecryptKey)
 
 Remove shop offer
 
@@ -355,15 +355,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ShopsApi(Configuration.Default);
-            var shopId = "shopId_example";  // string | Any shop id within the MetaFab ecosystem.
+            var shopId = "shopId_example";  // string | Any shop id within the MetaFab platform.
             var shopOfferId = "shopOfferId_example";  // string | Any offer id for the shop. Zero, or a positive integer.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 
             try
             {
                 // Remove shop offer
-                TransactionModel result = apiInstance.RemoveShopOffer(shopId, shopOfferId, xAuthorization, xPassword);
+                TransactionModel result = apiInstance.RemoveShopOffer(shopId, shopOfferId, xAuthorization, xWalletDecryptKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -382,10 +382,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shopId** | **string**| Any shop id within the MetaFab ecosystem. | 
+ **shopId** | **string**| Any shop id within the MetaFab platform. | 
  **shopOfferId** | **string**| Any offer id for the shop. Zero, or a positive integer. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
 
 ### Return type
 
@@ -416,7 +416,7 @@ No authorization required
 
 ## SetShopOffer
 
-> TransactionModel SetShopOffer (string shopId, string xAuthorization, string xPassword, SetShopOfferRequest setShopOfferRequest)
+> TransactionModel SetShopOffer (string shopId, string xAuthorization, string xWalletDecryptKey, SetShopOfferRequest setShopOfferRequest)
 
 Set shop offer
 
@@ -439,15 +439,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ShopsApi(Configuration.Default);
-            var shopId = "shopId_example";  // string | Any shop id within the MetaFab ecosystem.
+            var shopId = "shopId_example";  // string | Any shop id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var setShopOfferRequest = new SetShopOfferRequest(); // SetShopOfferRequest | 
 
             try
             {
                 // Set shop offer
-                TransactionModel result = apiInstance.SetShopOffer(shopId, xAuthorization, xPassword, setShopOfferRequest);
+                TransactionModel result = apiInstance.SetShopOffer(shopId, xAuthorization, xWalletDecryptKey, setShopOfferRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -466,9 +466,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shopId** | **string**| Any shop id within the MetaFab ecosystem. | 
+ **shopId** | **string**| Any shop id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setShopOfferRequest** | [**SetShopOfferRequest**](SetShopOfferRequest.md)|  | 
 
 ### Return type
@@ -500,7 +500,7 @@ No authorization required
 
 ## UseShopOffer
 
-> TransactionModel UseShopOffer (string shopId, string shopOfferId, string xAuthorization, string xPassword)
+> TransactionModel UseShopOffer (string shopId, string shopOfferId, string xAuthorization, string xWalletDecryptKey)
 
 Use shop offer
 
@@ -523,15 +523,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ShopsApi(Configuration.Default);
-            var shopId = "shopId_example";  // string | Any shop id within the MetaFab ecosystem.
+            var shopId = "shopId_example";  // string | Any shop id within the MetaFab platform.
             var shopOfferId = "shopOfferId_example";  // string | Any offer id for the shop. Zero, or a positive integer.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 
             try
             {
                 // Use shop offer
-                TransactionModel result = apiInstance.UseShopOffer(shopId, shopOfferId, xAuthorization, xPassword);
+                TransactionModel result = apiInstance.UseShopOffer(shopId, shopOfferId, xAuthorization, xWalletDecryptKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -550,10 +550,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shopId** | **string**| Any shop id within the MetaFab ecosystem. | 
+ **shopId** | **string**| Any shop id within the MetaFab platform. | 
  **shopOfferId** | **string**| Any offer id for the shop. Zero, or a positive integer. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
 
 ### Return type
 
@@ -584,7 +584,7 @@ No authorization required
 
 ## WithdrawFromShop
 
-> TransactionModel WithdrawFromShop (string shopId, string xAuthorization, string xPassword, WithdrawFromShopRequest withdrawFromShopRequest)
+> TransactionModel WithdrawFromShop (string shopId, string xAuthorization, string xWalletDecryptKey, WithdrawFromShopRequest withdrawFromShopRequest)
 
 Withdraw from shop
 
@@ -607,15 +607,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ShopsApi(Configuration.Default);
-            var shopId = "shopId_example";  // string | Any shop id within the MetaFab ecosystem.
+            var shopId = "shopId_example";  // string | Any shop id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var withdrawFromShopRequest = new WithdrawFromShopRequest(); // WithdrawFromShopRequest | 
 
             try
             {
                 // Withdraw from shop
-                TransactionModel result = apiInstance.WithdrawFromShop(shopId, xAuthorization, xPassword, withdrawFromShopRequest);
+                TransactionModel result = apiInstance.WithdrawFromShop(shopId, xAuthorization, xWalletDecryptKey, withdrawFromShopRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -634,9 +634,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shopId** | **string**| Any shop id within the MetaFab ecosystem. | 
+ **shopId** | **string**| Any shop id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **withdrawFromShopRequest** | [**WithdrawFromShopRequest**](WithdrawFromShopRequest.md)|  | 
 
 ### Return type

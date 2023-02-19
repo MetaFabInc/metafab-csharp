@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 ## BatchMintCollectionItems
 
-> TransactionModel BatchMintCollectionItems (string collectionId, string xAuthorization, string xPassword, BatchMintCollectionItemsRequest batchMintCollectionItemsRequest)
+> TransactionModel BatchMintCollectionItems (string collectionId, string xAuthorization, string xWalletDecryptKey, BatchMintCollectionItemsRequest batchMintCollectionItemsRequest)
 
 Batch mint collection items
 
@@ -53,15 +53,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var batchMintCollectionItemsRequest = new BatchMintCollectionItemsRequest(); // BatchMintCollectionItemsRequest | 
 
             try
             {
                 // Batch mint collection items
-                TransactionModel result = apiInstance.BatchMintCollectionItems(collectionId, xAuthorization, xPassword, batchMintCollectionItemsRequest);
+                TransactionModel result = apiInstance.BatchMintCollectionItems(collectionId, xAuthorization, xWalletDecryptKey, batchMintCollectionItemsRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -80,9 +80,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **batchMintCollectionItemsRequest** | [**BatchMintCollectionItemsRequest**](BatchMintCollectionItemsRequest.md)|  | 
 
 ### Return type
@@ -114,7 +114,7 @@ No authorization required
 
 ## BatchTransferCollectionItems
 
-> TransactionModel BatchTransferCollectionItems (string collectionId, string xAuthorization, string xPassword, BatchTransferCollectionItemsRequest batchTransferCollectionItemsRequest)
+> TransactionModel BatchTransferCollectionItems (string collectionId, string xAuthorization, string xWalletDecryptKey, BatchTransferCollectionItemsRequest batchTransferCollectionItemsRequest)
 
 Batch transfer collection items
 
@@ -137,15 +137,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var batchTransferCollectionItemsRequest = new BatchTransferCollectionItemsRequest(); // BatchTransferCollectionItemsRequest | 
 
             try
             {
                 // Batch transfer collection items
-                TransactionModel result = apiInstance.BatchTransferCollectionItems(collectionId, xAuthorization, xPassword, batchTransferCollectionItemsRequest);
+                TransactionModel result = apiInstance.BatchTransferCollectionItems(collectionId, xAuthorization, xWalletDecryptKey, batchTransferCollectionItemsRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -164,9 +164,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **batchTransferCollectionItemsRequest** | [**BatchTransferCollectionItemsRequest**](BatchTransferCollectionItemsRequest.md)|  | 
 
 ### Return type
@@ -198,7 +198,7 @@ No authorization required
 
 ## BurnCollectionItem
 
-> TransactionModel BurnCollectionItem (string collectionId, decimal collectionItemId, string xAuthorization, string xPassword, BurnCollectionItemRequest burnCollectionItemRequest)
+> TransactionModel BurnCollectionItem (string collectionId, decimal collectionItemId, string xAuthorization, string xWalletDecryptKey, BurnCollectionItemRequest burnCollectionItemRequest)
 
 Burn collection item
 
@@ -221,16 +221,16 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var burnCollectionItemRequest = new BurnCollectionItemRequest(); // BurnCollectionItemRequest | 
 
             try
             {
                 // Burn collection item
-                TransactionModel result = apiInstance.BurnCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, burnCollectionItemRequest);
+                TransactionModel result = apiInstance.BurnCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, burnCollectionItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -249,10 +249,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **burnCollectionItemRequest** | [**BurnCollectionItemRequest**](BurnCollectionItemRequest.md)|  | 
 
 ### Return type
@@ -284,7 +284,7 @@ No authorization required
 
 ## CreateCollection
 
-> CreateCollection200Response CreateCollection (string xAuthorization, string xPassword, CreateCollectionRequest createCollectionRequest)
+> CreateCollection200Response CreateCollection (string xAuthorization, string xWalletDecryptKey, CreateCollectionRequest createCollectionRequest)
 
 Create collection
 
@@ -308,13 +308,13 @@ namespace Example
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var createCollectionRequest = new CreateCollectionRequest(); // CreateCollectionRequest | 
 
             try
             {
                 // Create collection
-                CreateCollection200Response result = apiInstance.CreateCollection(xAuthorization, xPassword, createCollectionRequest);
+                CreateCollection200Response result = apiInstance.CreateCollection(xAuthorization, xWalletDecryptKey, createCollectionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -334,7 +334,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createCollectionRequest** | [**CreateCollectionRequest**](CreateCollectionRequest.md)|  | 
 
 ### Return type
@@ -366,7 +366,7 @@ No authorization required
 
 ## CreateCollectionItem
 
-> TransactionModel CreateCollectionItem (string collectionId, string xAuthorization, string xPassword, CreateCollectionItemRequest createCollectionItemRequest)
+> TransactionModel CreateCollectionItem (string collectionId, string xAuthorization, string xWalletDecryptKey, CreateCollectionItemRequest createCollectionItemRequest)
 
 Create collection item
 
@@ -389,15 +389,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var createCollectionItemRequest = new CreateCollectionItemRequest(); // CreateCollectionItemRequest | 
 
             try
             {
                 // Create collection item
-                TransactionModel result = apiInstance.CreateCollectionItem(collectionId, xAuthorization, xPassword, createCollectionItemRequest);
+                TransactionModel result = apiInstance.CreateCollectionItem(collectionId, xAuthorization, xWalletDecryptKey, createCollectionItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -416,9 +416,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createCollectionItemRequest** | [**CreateCollectionItemRequest**](CreateCollectionItemRequest.md)|  | 
 
 ### Return type
@@ -473,10 +473,10 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var operatorAddress = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
             var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
-            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab platform. (optional) 
 
             try
             {
@@ -500,10 +500,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **operatorAddress** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
  **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
- **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab platform. | [optional] 
 
 ### Return type
 
@@ -533,7 +533,7 @@ No authorization required
 
 ## GetCollectionItem
 
-> Object GetCollectionItem (string collectionId, decimal collectionItemId)
+> CollectionItem GetCollectionItem (string collectionId, decimal collectionItemId)
 
 Get collection item
 
@@ -556,13 +556,13 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
 
             try
             {
                 // Get collection item
-                Object result = apiInstance.GetCollectionItem(collectionId, collectionItemId);
+                CollectionItem result = apiInstance.GetCollectionItem(collectionId, collectionItemId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -581,12 +581,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
 
 ### Return type
 
-**Object**
+[**CollectionItem**](CollectionItem.md)
 
 ### Authorization
 
@@ -635,10 +635,10 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
             var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
-            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab platform. (optional) 
 
             try
             {
@@ -662,10 +662,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
  **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
- **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab platform. | [optional] 
 
 ### Return type
 
@@ -718,9 +718,9 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
-            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab platform. (optional) 
 
             try
             {
@@ -744,9 +744,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
- **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab platform. | [optional] 
 
 ### Return type
 
@@ -799,7 +799,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
 
             try
             {
@@ -823,7 +823,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
 
 ### Return type
 
@@ -876,10 +876,10 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
             var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
-            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab platform. (optional) 
 
             try
             {
@@ -903,10 +903,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
  **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
- **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab platform. | [optional] 
 
 ### Return type
 
@@ -959,7 +959,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
 
             try
@@ -984,7 +984,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
 
 ### Return type
@@ -1015,7 +1015,7 @@ No authorization required
 
 ## GetCollectionItems
 
-> List&lt;Object&gt; GetCollectionItems (string collectionId)
+> List&lt;CollectionItem&gt; GetCollectionItems (string collectionId)
 
 Get collection items
 
@@ -1038,12 +1038,12 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
 
             try
             {
                 // Get collection items
-                List<Object> result = apiInstance.GetCollectionItems(collectionId);
+                List<CollectionItem> result = apiInstance.GetCollectionItems(collectionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1062,11 +1062,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
 
 ### Return type
 
-**List<Object>**
+[**List&lt;CollectionItem&gt;**](CollectionItem.md)
 
 ### Authorization
 
@@ -1115,10 +1115,10 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var role = minter;  // string | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
             var address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D;  // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional) 
-            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab ecosystem. (optional) 
+            var walletId = "walletId_example";  // string | Any wallet id within the MetaFab platform. (optional) 
 
             try
             {
@@ -1142,10 +1142,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **role** | **string**| A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | 
  **address** | **string**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
- **walletId** | **string**| Any wallet id within the MetaFab ecosystem. | [optional] 
+ **walletId** | **string**| Any wallet id within the MetaFab platform. | [optional] 
 
 ### Return type
 
@@ -1252,7 +1252,7 @@ No authorization required
 
 ## GrantCollectionRole
 
-> TransactionModel GrantCollectionRole (string collectionId, string xAuthorization, string xPassword, GrantCollectionRoleRequest grantCollectionRoleRequest)
+> TransactionModel GrantCollectionRole (string collectionId, string xAuthorization, string xWalletDecryptKey, GrantCollectionRoleRequest grantCollectionRoleRequest)
 
 Grant collection role
 
@@ -1275,15 +1275,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var grantCollectionRoleRequest = new GrantCollectionRoleRequest(); // GrantCollectionRoleRequest | 
 
             try
             {
                 // Grant collection role
-                TransactionModel result = apiInstance.GrantCollectionRole(collectionId, xAuthorization, xPassword, grantCollectionRoleRequest);
+                TransactionModel result = apiInstance.GrantCollectionRole(collectionId, xAuthorization, xWalletDecryptKey, grantCollectionRoleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1302,9 +1302,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **grantCollectionRoleRequest** | [**GrantCollectionRoleRequest**](GrantCollectionRoleRequest.md)|  | 
 
 ### Return type
@@ -1336,7 +1336,7 @@ No authorization required
 
 ## MintCollectionItem
 
-> TransactionModel MintCollectionItem (string collectionId, decimal collectionItemId, string xAuthorization, string xPassword, MintCollectionItemRequest mintCollectionItemRequest)
+> TransactionModel MintCollectionItem (string collectionId, decimal collectionItemId, string xAuthorization, string xWalletDecryptKey, MintCollectionItemRequest mintCollectionItemRequest)
 
 Mint collection item
 
@@ -1359,16 +1359,16 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var mintCollectionItemRequest = new MintCollectionItemRequest(); // MintCollectionItemRequest | 
 
             try
             {
                 // Mint collection item
-                TransactionModel result = apiInstance.MintCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, mintCollectionItemRequest);
+                TransactionModel result = apiInstance.MintCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, mintCollectionItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1387,10 +1387,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **mintCollectionItemRequest** | [**MintCollectionItemRequest**](MintCollectionItemRequest.md)|  | 
 
 ### Return type
@@ -1422,7 +1422,7 @@ No authorization required
 
 ## RevokeCollectionRole
 
-> TransactionModel RevokeCollectionRole (string collectionId, string xAuthorization, string xPassword, RevokeCollectionRoleRequest revokeCollectionRoleRequest)
+> TransactionModel RevokeCollectionRole (string collectionId, string xAuthorization, string xWalletDecryptKey, RevokeCollectionRoleRequest revokeCollectionRoleRequest)
 
 Revoke collection role
 
@@ -1445,15 +1445,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var revokeCollectionRoleRequest = new RevokeCollectionRoleRequest(); // RevokeCollectionRoleRequest | 
 
             try
             {
                 // Revoke collection role
-                TransactionModel result = apiInstance.RevokeCollectionRole(collectionId, xAuthorization, xPassword, revokeCollectionRoleRequest);
+                TransactionModel result = apiInstance.RevokeCollectionRole(collectionId, xAuthorization, xWalletDecryptKey, revokeCollectionRoleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1472,9 +1472,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md)|  | 
 
 ### Return type
@@ -1506,7 +1506,7 @@ No authorization required
 
 ## SetCollectionApproval
 
-> TransactionModel SetCollectionApproval (string collectionId, string xAuthorization, string xPassword, SetCollectionApprovalRequest setCollectionApprovalRequest)
+> TransactionModel SetCollectionApproval (string collectionId, string xAuthorization, string xWalletDecryptKey, SetCollectionApprovalRequest setCollectionApprovalRequest)
 
 Set collection approval
 
@@ -1529,15 +1529,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var setCollectionApprovalRequest = new SetCollectionApprovalRequest(); // SetCollectionApprovalRequest | 
 
             try
             {
                 // Set collection approval
-                TransactionModel result = apiInstance.SetCollectionApproval(collectionId, xAuthorization, xPassword, setCollectionApprovalRequest);
+                TransactionModel result = apiInstance.SetCollectionApproval(collectionId, xAuthorization, xWalletDecryptKey, setCollectionApprovalRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1556,9 +1556,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **setCollectionApprovalRequest** | [**SetCollectionApprovalRequest**](SetCollectionApprovalRequest.md)|  | 
 
 ### Return type
@@ -1590,7 +1590,7 @@ No authorization required
 
 ## SetCollectionItemTimelock
 
-> TransactionModel SetCollectionItemTimelock (string collectionId, decimal collectionItemId, string xAuthorization, string xPassword, SetCollectionItemTimelockRequest setCollectionItemTimelockRequest)
+> TransactionModel SetCollectionItemTimelock (string collectionId, decimal collectionItemId, string xAuthorization, string xWalletDecryptKey, SetCollectionItemTimelockRequest setCollectionItemTimelockRequest)
 
 Set collection item timelock
 
@@ -1613,16 +1613,16 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var setCollectionItemTimelockRequest = new SetCollectionItemTimelockRequest(); // SetCollectionItemTimelockRequest | 
 
             try
             {
                 // Set collection item timelock
-                TransactionModel result = apiInstance.SetCollectionItemTimelock(collectionId, collectionItemId, xAuthorization, xPassword, setCollectionItemTimelockRequest);
+                TransactionModel result = apiInstance.SetCollectionItemTimelock(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, setCollectionItemTimelockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1641,10 +1641,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setCollectionItemTimelockRequest** | [**SetCollectionItemTimelockRequest**](SetCollectionItemTimelockRequest.md)|  | 
 
 ### Return type
@@ -1676,7 +1676,7 @@ No authorization required
 
 ## TransferCollectionItem
 
-> TransactionModel TransferCollectionItem (string collectionId, decimal collectionItemId, string xAuthorization, string xPassword, TransferCollectionItemRequest transferCollectionItemRequest)
+> TransactionModel TransferCollectionItem (string collectionId, decimal collectionItemId, string xAuthorization, string xWalletDecryptKey, TransferCollectionItemRequest transferCollectionItemRequest)
 
 Transfer collection item
 
@@ -1699,16 +1699,16 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ItemsApi(Configuration.Default);
-            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab ecosystem.
+            var collectionId = "collectionId_example";  // string | Any collection id within the MetaFab platform.
             var collectionItemId = 8.14D;  // decimal | Any item id for the collection. Zero, or a positive integer.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var transferCollectionItemRequest = new TransferCollectionItemRequest(); // TransferCollectionItemRequest | 
 
             try
             {
                 // Transfer collection item
-                TransactionModel result = apiInstance.TransferCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, transferCollectionItemRequest);
+                TransactionModel result = apiInstance.TransferCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, transferCollectionItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -1727,10 +1727,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **string**| Any collection id within the MetaFab ecosystem. | 
+ **collectionId** | **string**| Any collection id within the MetaFab platform. | 
  **collectionItemId** | **decimal**| Any item id for the collection. Zero, or a positive integer. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **transferCollectionItemRequest** | [**TransferCollectionItemRequest**](TransferCollectionItemRequest.md)|  | 
 
 ### Return type

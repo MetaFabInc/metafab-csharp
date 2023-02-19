@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateLootboxManager
 
-> CreateLootboxManager200Response CreateLootboxManager (string xAuthorization, string xPassword, CreateLootboxManagerRequest createLootboxManagerRequest)
+> CreateLootboxManager200Response CreateLootboxManager (string xAuthorization, string xWalletDecryptKey, CreateLootboxManagerRequest createLootboxManagerRequest)
 
 Create lootbox manager
 
@@ -40,13 +40,13 @@ namespace Example
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new LootboxesApi(Configuration.Default);
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var createLootboxManagerRequest = new CreateLootboxManagerRequest(); // CreateLootboxManagerRequest | 
 
             try
             {
                 // Create lootbox manager
-                CreateLootboxManager200Response result = apiInstance.CreateLootboxManager(xAuthorization, xPassword, createLootboxManagerRequest);
+                CreateLootboxManager200Response result = apiInstance.CreateLootboxManager(xAuthorization, xWalletDecryptKey, createLootboxManagerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -66,7 +66,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createLootboxManagerRequest** | [**CreateLootboxManagerRequest**](CreateLootboxManagerRequest.md)|  | 
 
 ### Return type
@@ -121,8 +121,8 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new LootboxesApi(Configuration.Default);
-            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab ecosystem.
-            var lootboxManagerLootboxId = "lootboxManagerLootboxId_example";  // string | Any lootbox manager lootbox id within the MetaFab ecosystem.
+            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab platform.
+            var lootboxManagerLootboxId = "lootboxManagerLootboxId_example";  // string | Any lootbox manager lootbox id within the MetaFab platform.
 
             try
             {
@@ -146,8 +146,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab ecosystem. | 
- **lootboxManagerLootboxId** | **string**| Any lootbox manager lootbox id within the MetaFab ecosystem. | 
+ **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab platform. | 
+ **lootboxManagerLootboxId** | **string**| Any lootbox manager lootbox id within the MetaFab platform. | 
 
 ### Return type
 
@@ -200,7 +200,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new LootboxesApi(Configuration.Default);
-            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab ecosystem.
+            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab platform.
 
             try
             {
@@ -224,7 +224,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab ecosystem. | 
+ **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab platform. | 
 
 ### Return type
 
@@ -331,7 +331,7 @@ No authorization required
 
 ## OpenLootboxManagerLootbox
 
-> List&lt;TransactionModel&gt; OpenLootboxManagerLootbox (string lootboxManagerId, string lootboxManagerLootboxId, string xAuthorization, string xPassword)
+> List&lt;TransactionModel&gt; OpenLootboxManagerLootbox (string lootboxManagerId, string lootboxManagerLootboxId, string xAuthorization, string xWalletDecryptKey)
 
 Open lootbox manager lootbox
 
@@ -354,15 +354,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new LootboxesApi(Configuration.Default);
-            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab ecosystem.
-            var lootboxManagerLootboxId = "lootboxManagerLootboxId_example";  // string | Any lootbox manager lootbox id within the MetaFab ecosystem.
+            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab platform.
+            var lootboxManagerLootboxId = "lootboxManagerLootboxId_example";  // string | Any lootbox manager lootbox id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 
             try
             {
                 // Open lootbox manager lootbox
-                List<TransactionModel> result = apiInstance.OpenLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xPassword);
+                List<TransactionModel> result = apiInstance.OpenLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xWalletDecryptKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -381,10 +381,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab ecosystem. | 
- **lootboxManagerLootboxId** | **string**| Any lootbox manager lootbox id within the MetaFab ecosystem. | 
+ **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab platform. | 
+ **lootboxManagerLootboxId** | **string**| Any lootbox manager lootbox id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
 
 ### Return type
 
@@ -415,7 +415,7 @@ No authorization required
 
 ## RemoveLootboxManagerLootbox
 
-> TransactionModel RemoveLootboxManagerLootbox (string lootboxManagerId, string lootboxManagerLootboxId, string xAuthorization, string xPassword)
+> TransactionModel RemoveLootboxManagerLootbox (string lootboxManagerId, string lootboxManagerLootboxId, string xAuthorization, string xWalletDecryptKey)
 
 Remove lootbox manager lootbox
 
@@ -438,15 +438,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new LootboxesApi(Configuration.Default);
-            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab ecosystem.
-            var lootboxManagerLootboxId = "lootboxManagerLootboxId_example";  // string | Any lootbox manager lootbox id within the MetaFab ecosystem.
+            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab platform.
+            var lootboxManagerLootboxId = "lootboxManagerLootboxId_example";  // string | Any lootbox manager lootbox id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 
             try
             {
                 // Remove lootbox manager lootbox
-                TransactionModel result = apiInstance.RemoveLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xPassword);
+                TransactionModel result = apiInstance.RemoveLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xWalletDecryptKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -465,10 +465,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab ecosystem. | 
- **lootboxManagerLootboxId** | **string**| Any lootbox manager lootbox id within the MetaFab ecosystem. | 
+ **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab platform. | 
+ **lootboxManagerLootboxId** | **string**| Any lootbox manager lootbox id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
 
 ### Return type
 
@@ -499,7 +499,7 @@ No authorization required
 
 ## SetLootboxManagerLootbox
 
-> TransactionModel SetLootboxManagerLootbox (string lootboxManagerId, string xAuthorization, string xPassword, SetLootboxManagerLootboxRequest setLootboxManagerLootboxRequest)
+> TransactionModel SetLootboxManagerLootbox (string lootboxManagerId, string xAuthorization, string xWalletDecryptKey, SetLootboxManagerLootboxRequest setLootboxManagerLootboxRequest)
 
 Set lootbox manager lootbox
 
@@ -522,15 +522,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new LootboxesApi(Configuration.Default);
-            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab ecosystem.
+            var lootboxManagerId = "lootboxManagerId_example";  // string | Any lootbox manager id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var setLootboxManagerLootboxRequest = new SetLootboxManagerLootboxRequest(); // SetLootboxManagerLootboxRequest | 
 
             try
             {
                 // Set lootbox manager lootbox
-                TransactionModel result = apiInstance.SetLootboxManagerLootbox(lootboxManagerId, xAuthorization, xPassword, setLootboxManagerLootboxRequest);
+                TransactionModel result = apiInstance.SetLootboxManagerLootbox(lootboxManagerId, xAuthorization, xWalletDecryptKey, setLootboxManagerLootboxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -549,9 +549,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab ecosystem. | 
+ **lootboxManagerId** | **string**| Any lootbox manager id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setLootboxManagerLootboxRequest** | [**SetLootboxManagerLootboxRequest**](SetLootboxManagerLootboxRequest.md)|  | 
 
 ### Return type

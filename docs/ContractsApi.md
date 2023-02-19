@@ -195,7 +195,7 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ContractsApi(Configuration.Default);
-            var contractId = "contractId_example";  // string | Any contract id within the MetaFab ecosystem.
+            var contractId = "contractId_example";  // string | Any contract id within the MetaFab platform.
             var func = "func_example";  // string | A contract function name. This can be any valid function from the the ABI of the contract you are interacting with. For example, `balanceOf`.
             var args = 123,"Hello",false;  // string | A comma seperated list of basic data type arguments. This is optional and only necessary if the function being invoked requires arguments per the contract ABI. For example, `123,\"Hello\",false`. (optional) 
 
@@ -221,7 +221,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **string**| Any contract id within the MetaFab ecosystem. | 
+ **contractId** | **string**| Any contract id within the MetaFab platform. | 
  **func** | **string**| A contract function name. This can be any valid function from the the ABI of the contract you are interacting with. For example, &#x60;balanceOf&#x60;. | 
  **args** | **string**| A comma seperated list of basic data type arguments. This is optional and only necessary if the function being invoked requires arguments per the contract ABI. For example, &#x60;123,\&quot;Hello\&quot;,false&#x60;. | [optional] 
 
@@ -253,7 +253,7 @@ No authorization required
 
 ## TransferContractOwnership
 
-> TransactionModel TransferContractOwnership (string contractId, string xAuthorization, string xPassword, TransferContractOwnershipRequest transferContractOwnershipRequest)
+> TransactionModel TransferContractOwnership (string contractId, string xAuthorization, string xWalletDecryptKey, TransferContractOwnershipRequest transferContractOwnershipRequest)
 
 Transfer contract ownership
 
@@ -276,15 +276,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ContractsApi(Configuration.Default);
-            var contractId = "contractId_example";  // string | Any contract id within the MetaFab ecosystem.
+            var contractId = "contractId_example";  // string | Any contract id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var transferContractOwnershipRequest = new TransferContractOwnershipRequest(); // TransferContractOwnershipRequest | 
 
             try
             {
                 // Transfer contract ownership
-                TransactionModel result = apiInstance.TransferContractOwnership(contractId, xAuthorization, xPassword, transferContractOwnershipRequest);
+                TransactionModel result = apiInstance.TransferContractOwnership(contractId, xAuthorization, xWalletDecryptKey, transferContractOwnershipRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -303,9 +303,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **string**| Any contract id within the MetaFab ecosystem. | 
+ **contractId** | **string**| Any contract id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **transferContractOwnershipRequest** | [**TransferContractOwnershipRequest**](TransferContractOwnershipRequest.md)|  | 
 
 ### Return type
@@ -337,7 +337,7 @@ No authorization required
 
 ## UpgradeContractTrustedForwarder
 
-> TransactionModel UpgradeContractTrustedForwarder (string contractId, string xAuthorization, string xPassword, UpgradeContractTrustedForwarderRequest upgradeContractTrustedForwarderRequest)
+> TransactionModel UpgradeContractTrustedForwarder (string contractId, string xAuthorization, string xWalletDecryptKey, UpgradeContractTrustedForwarderRequest upgradeContractTrustedForwarderRequest)
 
 Upgrade contract trusted forwarder
 
@@ -360,15 +360,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ContractsApi(Configuration.Default);
-            var contractId = "contractId_example";  // string | Any contract id within the MetaFab ecosystem.
+            var contractId = "contractId_example";  // string | Any contract id within the MetaFab platform.
             var xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP;  // string | The `secretKey` of the authenticating game.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
             var upgradeContractTrustedForwarderRequest = new UpgradeContractTrustedForwarderRequest(); // UpgradeContractTrustedForwarderRequest | 
 
             try
             {
                 // Upgrade contract trusted forwarder
-                TransactionModel result = apiInstance.UpgradeContractTrustedForwarder(contractId, xAuthorization, xPassword, upgradeContractTrustedForwarderRequest);
+                TransactionModel result = apiInstance.UpgradeContractTrustedForwarder(contractId, xAuthorization, xWalletDecryptKey, upgradeContractTrustedForwarderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -387,9 +387,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **string**| Any contract id within the MetaFab ecosystem. | 
+ **contractId** | **string**| Any contract id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **upgradeContractTrustedForwarderRequest** | [**UpgradeContractTrustedForwarderRequest**](UpgradeContractTrustedForwarderRequest.md)|  | 
 
 ### Return type
@@ -421,7 +421,7 @@ No authorization required
 
 ## WriteContract
 
-> TransactionModel WriteContract (string contractId, string xAuthorization, string xPassword, WriteContractRequest writeContractRequest)
+> TransactionModel WriteContract (string contractId, string xAuthorization, string xWalletDecryptKey, WriteContractRequest writeContractRequest)
 
 Write contract data
 
@@ -444,15 +444,15 @@ namespace Example
         {
             Configuration.Default.BasePath = "https://api.trymetafab.com";
             var apiInstance = new ContractsApi(Configuration.Default);
-            var contractId = "contractId_example";  // string | Any contract id within the MetaFab ecosystem.
+            var contractId = "contractId_example";  // string | Any contract id within the MetaFab platform.
             var xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"];  // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-            var xPassword = mySecurePassword;  // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+            var xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=;  // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
             var writeContractRequest = new WriteContractRequest(); // WriteContractRequest | 
 
             try
             {
                 // Write contract data
-                TransactionModel result = apiInstance.WriteContract(contractId, xAuthorization, xPassword, writeContractRequest);
+                TransactionModel result = apiInstance.WriteContract(contractId, xAuthorization, xWalletDecryptKey, writeContractRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -471,9 +471,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **string**| Any contract id within the MetaFab ecosystem. | 
+ **contractId** | **string**| Any contract id within the MetaFab platform. | 
  **xAuthorization** | **string**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **writeContractRequest** | [**WriteContractRequest**](WriteContractRequest.md)|  | 
 
 ### Return type
